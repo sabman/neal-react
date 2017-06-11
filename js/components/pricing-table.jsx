@@ -6,7 +6,7 @@ export class PricingTable extends React.Component {
   render() {
     return (
       <div className="neal-pricing-table">
-        <HorizontalSplit>{this.props.children}</HorizontalSplit>
+        <div className="card-deck">{this.props.children}</div>
       </div>
     );
   }
@@ -42,21 +42,25 @@ export class PricingPlan extends React.Component {
             <span className="neal-pricing-plan-price-period">{this.props.period}</span>
           </div>
           <p className="card-text text-xs-center neal-pricing-plan-description">{this.props.description}</p>
-          <p className="card-text text-xs-center neal-pricing-plan-action">
-            <button className="btn btn-ghost btn-primary btn-lg" onClick={this.props.onClick}>
-              {this.props.buttonText}
-            </button>
-          </p>
         </div>
         <div className="card-block neal-pricing-plan-features">
           <ul className="list-group list-group-flush">
             {Object.keys(this.props.features).map((name, idx) => {
               const isEnabled = this.props.features[name];
               const _className = classNames("neal-pricing-plan-feature", { isEnabled, "isDisabled": !isEnabled });
-              return <li key={idx} className={_className}>{name}</li>;
+              const _iconClassName = classNames("fa", { "fa-check-square-o": isEnabled, "fa-minus-square-o": !isEnabled });
+
+              return <li key={idx} className={_className}><i className={_iconClassName} aria-hidden="true"></i> {name}</li>;
             })}
           </ul>
         </div>
+        <div className="card-footer text-center">
+          <p className="card-text text-xs-center neal-pricing-plan-action">
+            <button role="button" className="btn btn-ghost btn-primary btn-lg" onClick={this.props.onClick}>
+              {this.props.buttonText}
+            </button>
+          </p>          
+        </div>        
       </div>
     );
   }

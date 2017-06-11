@@ -17,6 +17,10 @@ var _navbar = require("./navbar");
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
+var _classnames = require("classnames");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37,9 +41,10 @@ var Footer = exports.Footer = function (_React$Component) {
   _createClass(Footer, [{
     key: "render",
     value: function render() {
+      var _className = (0, _classnames2.default)("neal-footer navbar", this.props.className);
       return _react2.default.createElement(
         "footer",
-        { className: "neal-footer navbar" },
+        { className: _className },
         _react2.default.createElement(
           _bootstrap.Container,
           null,
@@ -86,7 +91,8 @@ var Footer = exports.Footer = function (_React$Component) {
         { className: "nav navbar-nav neal-footer-social pull-right" },
         this.renderSocialIcon("fa-twitter", this.props.twitterUrl),
         this.renderSocialIcon("fa-facebook", this.props.facebookUrl),
-        this.renderSocialIcon("fa-github", this.props.githubUrl)
+        this.renderSocialIcon("fa-github", this.props.githubUrl),
+        this.renderSocialIcon("fa-linkedin", this.props.linkedinUrl)
       );
     }
   }, {

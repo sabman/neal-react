@@ -41,8 +41,8 @@ var PricingTable = exports.PricingTable = function (_React$Component) {
         "div",
         { className: "neal-pricing-table" },
         _react2.default.createElement(
-          _index.HorizontalSplit,
-          null,
+          "div",
+          { className: "card-deck" },
           this.props.children
         )
       );
@@ -95,15 +95,6 @@ var PricingPlan = exports.PricingPlan = function (_React$Component2) {
             "p",
             { className: "card-text text-xs-center neal-pricing-plan-description" },
             this.props.description
-          ),
-          _react2.default.createElement(
-            "p",
-            { className: "card-text text-xs-center neal-pricing-plan-action" },
-            _react2.default.createElement(
-              "button",
-              { className: "btn btn-ghost btn-primary btn-lg", onClick: this.props.onClick },
-              this.props.buttonText
-            )
           )
         ),
         _react2.default.createElement(
@@ -115,12 +106,29 @@ var PricingPlan = exports.PricingPlan = function (_React$Component2) {
             Object.keys(this.props.features).map(function (name, idx) {
               var isEnabled = _this3.props.features[name];
               var _className = (0, _classnames2.default)("neal-pricing-plan-feature", { isEnabled: isEnabled, "isDisabled": !isEnabled });
+              var _iconClassName = (0, _classnames2.default)("fa", { "fa-check-square-o": isEnabled, "fa-minus-square-o": !isEnabled });
+
               return _react2.default.createElement(
                 "li",
                 { key: idx, className: _className },
+                _react2.default.createElement("i", { className: _iconClassName, "aria-hidden": "true" }),
+                " ",
                 name
               );
             })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "card-footer text-center" },
+          _react2.default.createElement(
+            "p",
+            { className: "card-text text-xs-center neal-pricing-plan-action" },
+            _react2.default.createElement(
+              "button",
+              { role: "button", className: "btn btn-ghost btn-primary btn-lg", onClick: this.props.onClick },
+              this.props.buttonText
+            )
           )
         )
       );

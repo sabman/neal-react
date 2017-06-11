@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "../helpers/bootstrap";
 import Navbar from "./navbar";
+import classNames from "classnames";
 
 export class Footer extends React.Component {
 
@@ -14,8 +15,9 @@ export class Footer extends React.Component {
   };
 
   render() {
+    const _className = classNames("neal-footer navbar", this.props.className);
     return (
-      <footer className="neal-footer navbar">
+      <footer className={_className}>
         <Container>
           <Row>
             <Col size={["xs-12", "md-4"]}>
@@ -44,6 +46,7 @@ export class Footer extends React.Component {
         { this.renderSocialIcon("fa-twitter", this.props.twitterUrl) }
         { this.renderSocialIcon("fa-facebook", this.props.facebookUrl) }
         { this.renderSocialIcon("fa-github", this.props.githubUrl) }
+        { this.renderSocialIcon("fa-linkedin", this.props.linkedinUrl) }
       </ul>
     );
   }
